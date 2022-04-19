@@ -1,7 +1,0 @@
-\babel@toc {spanish}{}
-\babel@toc {spanish}{}
-\contentsline {section}{Introducción General}{1}{section*.1}%
-\contentsline {section}{\textit {Section Matching}}{1}{section*.2}%
-\contentsline {section}{Implementación de Cada Algoritmo}{1}{section*.3}%
-\contentsline {section}{Conclusión}{1}{section*.4}%
-\contentsline {section}{\large \textbf {Referencias}}{2}{section*.5}%
