@@ -1,1 +1,1 @@
-# ProyectoInvestigacionEstructurasDiscretas
+# Proyecto Investigacion Estructuras Discretas
