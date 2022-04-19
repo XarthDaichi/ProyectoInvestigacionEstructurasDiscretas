@@ -1,0 +1,128 @@
+% PLANTILLA APA7
+% Creado por: Isaac Palma Medina
+% Última actualización: 25/07/2021
+% @COPYLEFT
+
+% Fuentes consultadas (todos los derechos reservados):  
+% Normas APA. (2019). Guía Normas APA. https://normas-apa.org/wp-content/uploads/Guia-Normas-APA-7ma-edicion.pdf
+% Tecnológico de Costa Rica [Richmond]. (2020, 16 abril). LaTeX desde cero con Overleaf (1 de 3) [Vídeo]. YouTube. https://www.youtube.com/watch?v=kM1KvHVuaTY Weiss, D. (2021). 
+% Formatting documents in APA style (7th Edition) with the apa7 LATEX class. https://ctan.math.washington.edu/tex-archive/macros/latex/contrib/apa7/apa7.pdf @COPYLEFT
+
+%+-+-+-+-++-+-+-+-+-+-+-+-+-++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-++-+-+-+-+-+-+-+-+-+
+
+% Preámbulo
+\documentclass[stu, 11pt, letterpaper, donotrepeattitle, floatsintext, natbib, helv]{apa7}
+\usepackage[utf8]{inputenc}
+\usepackage{comment}
+\usepackage{marvosym}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[normalem]{ulem}
+\usepackage[spanish]{babel} 
+\usepackage{algorithm}
+\usepackage{setspace}
+%\usepackage{titling}
+\let\apasubparagraph\subparagraph
+\let\subparagraph\paragraph
+\usepackage[compact]{titlesec}
+\let\subparagraph\apasubparagraph
+\usepackage{hyperref}
+\selectlanguage{spanish}
+\useunder{\uline}{\ul}{}
+\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
+\graphicspath{{./images/}}
+\titleformat{\section}{\normalfont\large\bfseries}{\thetitle. \quad }{0pt}{}[{ \titlerule[0.8pt]}]
+\titleformat{\subsection}{\normalfont\bfseries}{}{}{}[]
+
+% Portada
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vfill
+    \LARGE Sobre Matching en Hileras\\
+    \vskip2cm
+    \large Victor David Coto Solano \\
+    \large Diego Quirós Artiñano \\
+    \large Derek Rojas Mendoza \\
+    \vskip2cm
+    Universidad Nacional de Costa Rica \\
+    EIF-203: Estructuras Discretas Grupo 01-10am \\ 
+    Carlos Loria-Saenz \\
+    Ciclo I 2022 \\
+    \vfill
+    \includegraphics[width = 0.4\textwidth]{./UNAImage/UNA.png} \\
+    \vfill
+    \vfill
+    % (autores separados, consultar al docente)
+    % Manera oficial de colocar los autores:
+    %\author{Autor(a) I, Autor(a) II, Autor(a) III, Autor(a) X}
+\end{titlepage}
+
+
+% Índices
+\pagenumbering{roman}
+    % Contenido
+%-----------------------------------------------------------------------------
+\section*{Resumen}
+
+%------------------------------------------------------------------------------------
+\section*{Palabras Clave}
+
+\newpage
+%--------------------------------------------------------------------------------------------------
+    \addto\captionsspanish{
+    \renewcommand*\contentsname{\largeÍndice}
+}
+\tableofcontents
+\setcounter{tocdepth}{2}
+\newpage
+    % Figuras
+\renewcommand{\listfigurename}{\largeÍndice de fíguras}
+\listoffigures
+\newpage
+    % Tablas
+\renewcommand{\listtablename}{\largeÍndice de tablas}
+\listoftables
+\newpage
+
+\renewcommand{\listalgorithmname}{\largeÍndice de algoritmos}
+\listofalgorithms
+\addtocontents{loa}{\def\string\figurename{Algorithm}}
+\newpage
+
+% Cuerpo
+\pagenumbering{arabic}
+
+%------------------------------------------------------------------------------------
+\begin{singlespace}
+\section*{Introducción General}
+\phantomsection
+\addcontentsline{toc}{section}{Introducción General}
+
+%----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\section*{\textit{Section Matching}}% -seccion de string matching con ejemplos ilustrativos propios
+\phantomsection
+\addcontentsline{toc}{section}{\textit{Section Matching}}
+
+%----------------------------------------------------------------------------------------------------------------------------------------
+\section*{Implementación de Cada Algoritmo}
+\phantomsection
+\addcontentsline{toc}{section}{Implementación de Cada Algoritmo}
+
+%-----------------------------------------------------------------------------------------------------------------------------------------------------
+\section*{Conclusión}
+\phantomsection
+\addcontentsline{toc}{section}{Conclusión}
+
+%----------------------------------------------------------------------------------------------------------------------------------------------------------------
+\appendix
+
+\cite{circuits}
+\newpage
+% Referencias
+\renewcommand\refname{\large\textbf{Referencias}}
+\bibliography{ref}
+\end{singlespace}
+\end{document}
