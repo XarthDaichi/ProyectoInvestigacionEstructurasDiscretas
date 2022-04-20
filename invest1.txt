@@ -1,0 +1,171 @@
+Resumen: (Derek)
+
+String Matching: Básicamente es buscar un determinado patrón en una hilera de caracteres
+
+Hashing: convierte uno o varios elementos de entrada a una función en otro elemento.
+
+KMP:  La búsqueda se lleva a cabo utilizando información basada en los fallos previos. Información obtenida del propio patrón creando previamente una tabla de valores sobre su propio contenido. El objetivo de crear dicha tabla es poder determinar donde podría darse la siguiente existencia, sin necesidad de analizar más de 1 vez los caracteres de la cadena donde se busca.
+
+Boyer-Moore: va buscando de derecha a izquierda, si la letra  en el texto coincide con la ultima letra del patrón, empieza a recorrer hacia la izquierda de 1 en 1 para ver si coinciden, si no, se salta el numero de posiciones equivalente a la cantidad de letras del patrón y vuelve a buscar
+
+Rabin-Karp: Según entiendo, convierte el texto en un índice hash y lo compara con el patrón, coinciden, compara el texto con el patrón.
+
+Resumen (David):
+Exact String Matching Algorithms: Survey, Issues, and Future Research Directions – Notes
+
+0. Reference:
+•	Hakak, Saqib Iqbal, Amirrudin Kamsin, Palaiahnakote Shivakumara, Gulshan Amin Gilkar, Wazir Zada Khan, and Muhammad Imran. "Exact String Matching Algorithms: Survey, Issues, and Future Research Directions." IEEE Access 7 (2019): 69614-9637. Web.
+
+
+0.1 Link:
+Exact String Matching Algorithms: Survey, Issues, and Future Research Directions - Universidad Nacional (exlibrisgroup.com)
+
+
+1. On the impact of String Matching:
+“String matching is a universal technique for solving problems of different fields, such as text mining, natural language processing, image processing, speech processing, computer vision, and pattern recognition” (pag. 1)
+
+
+2. An example of Application in Music:
+“Szeto and Wong [4] used string matching algorithm to find patterns in musical databases.” (pag. 2)
+
+
+3. Proposed Classification for String Matching Algorithms:
+ 
+(pag. 3)
+
+4. Proposed Division of the Character-Based Approach (Compare Characters):
+“This approach can be further divided into six subgroups: brute force, BM, skip search, automata, Morris-Pratt, and factorization [33]” (pag. 4)
+
+
+5. About the Impact of Boyer-Moore Algorithm:
+“Among many character-based approaches, BM algorithm [34] is the baseline and is a standard and benchmark approach [27]. The key step in the BM algorithm is that shift table sends information about the number of characters that can be skipped to find a match when a mismatch occurs [35].” (pag. 4)
+
+
+6. Boyer-Moore Explanation:
+“BM algorithm starts searching characters from right to left of the given pattern. As shown in Figure 4, this algorithm can shift as many m characters as possible in case of amismatch. BM algorithm involves two stages: pre-processing and searching for a given pattern from the right side of the window and using a bad-match table to skip characters in case of a mismatch.
+• Pre-processing: During the pre-processing stage, a table is created to provide values regarding the amount of shift required in case of a mismatch. This table is also known as the bad-match table. Once a character mismatch occurs, the algorithm shifts to the right of the pattern in accordance with the value given in the badmatch table.
+• Searching for a given pattern: Searching starts from the tail of the pattern (i.e., from right to left of the text) unlike in the naive algorithm in which the search starts from left to right. The algorithm works by computing the length of the search string and storing its value as default shift length. The time complexities of this algorithm are O(n+m) and O(n×m) for the best and worst cases, respectively. Here, m denotes the length of pattern and n denotes the length of text to be searched. This process is suitable for a moderately sized alphabet with a long-length pattern [36]. However, not all characters within the text are compared [37]. In addition, the size of pattern and alphabet affects the pre-processing time [36]. To overcome these problems, extended BM approaches are proposed, as shown in Figure 5.” (pag. 5)
+
+
+7. Boyer-Moore Variations:
+“… ” (pag. 5, pag. 6, pag. 7) 
+
+
+8. Karp-Rabin Algorithm: Hashing Based Approach:
+“… ” (pag. 7)
+•	Note: It is necessary to understand what a “hash table” is, in order to explain this approach
+
+
+9. Proposed Classification for Hashing Based Approaches:
+ 
+(pag. 8)
+
+
+10. Multiple Applications of String Matching Algorithms
+“… ” (pag. 18, pag. 19, pag. 20)
+
+
+The Exact Online String Matching Problem: A Review of the Most Recent Results – Notes
+
+0. Article Reference: 
+•	Faro, S. and Lecroq, T. 2013. The exact online string matching problem: A review of the most recent results. ACM Comput. Surv. 45, 2, Article 13 (February 2013), 42 pages.
+o	DOI = 10.1145/2431211.2431212 http://doi.acm.org/10.1145/2431211.2431212
+
+1. Definition of the String Matching problem:
+“Given a text t of length n and a pattern p of length m over some alphabet Σ of size σ, the
+string matching problem consists in finding all occurrences of the pattern p in the text
+t” (pag. 1)
+
+
+2. There are two kinds of Solutions (Based on Application):
+•	Online String Matching 
+o	“Algorithms based on the use of automata or combinatorial properties of string” (pag. 2)
+•	Offline String Matching 
+o	“The notion of indexes realized by trees or automata” (pag. 2)
+
+
+3. Online String Matching Algorithms can be divided into five clases:
+•	“Algorithms which solve the problem by making use only of comparisons between characters…” (pag. 2)
+•	“Algorithms which make use of deterministic automata…” (pag. 2)
+•	“Algorithms which simulate nondeterministic automata…” (pag. 2)
+•	“Constant-space algorithms…” (pag. 2)
+•	“Real-time algorithms…” (pag. 2)
+
+
+4. Worst Case of Lower Bound (String Matching problem): 
+•	“The worst-case lower bound of the string matching problem is O(n)” (pag. 2)
+•	“The first algorithm to reach the bound was given by Morris and Pratt [1970] later improved by Knuth…” (pag. 2)
+o	The reader can refer to Section 7 of Knuth et al. [1977] for historical remarks: [KNUTH, D. E., MORRIS, JR, J. H., AND PRATT, V. R. 1977. Fast pattern matching in strings. SIAM J. Comput. 6, 1, 323–350.]
+
+
+5. Constant-space String Matching and Real-time String Matching:
+“Two of the most important subdomains of string matching are constant-space string
+matching, which aims to solutions which use only constant extra space, and real-time
+string matching where the time difference between the processing of two consecutive
+text characters must be bounded by a constant.” (pag. 2)
+
+
+6. Formal Explanation of the String Matching Problem:
+“… ” (pag. 3)
+
+
+7. Intuitive Explanation of the String Matching Problem:
+“Most string matching algorithms generally work as follows. They scan the text with
+the help of a window of the text whose size is generally equal to m. For each window
+of the text they check the occurrence of the pattern (this specific work is called an
+attempt) by comparing the characters of the window with the characters of the pattern,
+or by performing transitions on some kind of automaton, or by using some kind of
+filtering method. After a whole match of the pattern or after a mismatch they shift
+the window to the right by a certain number of positions. This mechanism is usually
+called the sliding window mechanism. At the beginning of the search they align the
+left ends of the window and the text, then they repeat the sliding window mechanism
+until the right end of the window goes beyond the right end of the text. We associate
+each attempt with the position s in the text where the window is positioned, that is,
+t[s . . s + m− 1]” (pag. 3)
+
+
+8. Explanation of the KMP Algorithm:
+“… ” (pag. 5) 
+•	[KNUTH, D. E., MORRIS, JR, J. H., AND PRATT, V. R. 1977. Fast pattern matching in strings. SIAM J. Comput. 6, 1, 323–350.]
+
+
+9. Explanation of the Boyer-Moore Algorithm:
+“… ” (pag. 5) 
+•	[BOYER, R. S. AND MOORE, J. S. 1977. A fast string searching algorithm. Comm. ACM 20, 10, 762–772.]
+
+
+10. Reference to the Karp-Rabin Algorithm: 
+•	[KARP, R. M. AND RABIN, M. O. 1987. Efficient randomized pattern-matching algorithms. IBM J. Res.Dev. 31, 2, 249–260.]
+
+
+
+Resumen (Diego):
+- Documento Two-Way String-Matching: buscar sobre antomata theory a ver si alluda
+- String Matching is pattern recognition, works for other jobs not only string
+- String within another String (looking for part in another part)
+- KMP and Boyer-Moore similar opposite way scanning, different O()
+
+- Documento: GeeksForGeeks
+- String Matching, two types: Exact Matching, Approximate Matching
+- Exact:
+       (based on character comparison)
+        - Naive or (Brute Force): character per character until found and then continue to see all the rest that match
+        - KMP: similar to naive, skips on a mismatch (left to right)
+        - Boyer-More: similar to KMP and Naive, skips on mismatch (right to left)
+      (Deterministic Finite Automaton (DFA) method: (not part of the investigation)
+      (Based on Bit (parrallalism) Method: (not part of the investigation)
+      (Hashing): Robin-Karp, if hashes match then the character comparison starts, but not before
+- Approximate:
+      Con be used for DNA Mutations subsequences
+      - Naive
+      - Sellers (Dynamic Programming)
+      - Shift or (Bitmap Algorithm)
+
+- String Matching used for:
+    - Plagirism Detection
+    - DNA Sequencing
+    - Digital Forensics (investigations)
+    - Selling checkers
+    - Spam filters
+    - Search engines (google or ctrl+f)
+    - Intrusion Detection
