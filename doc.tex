@@ -19,6 +19,7 @@
 \usepackage{float}
 \usepackage[normalem]{ulem}
 \usepackage[spanish]{babel} 
+\usepackage{algpseudocode}
 \usepackage{algorithm}
 \usepackage{setspace}
 %\usepackage{titling}
@@ -89,7 +90,7 @@
 
 \renewcommand{\listalgorithmname}{\largeÍndice de algoritmos}
 \listofalgorithms
-\addtocontents{loa}{\def\string\figurename{Algorithm}}
+% \addtocontents{loa}{\def\string\figurename{Algorithm}}
 \newpage
 
 % Cuerpo
@@ -102,7 +103,7 @@
 \addcontentsline{toc}{section}{Introducción General}
 
 %----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-\section*{\textit{Section Matching}}% -seccion de string matching con ejemplos ilustrativos propios
+\section*{\textit{String Matching}}% -seccion de string matching con ejemplos ilustrativos propios
 \phantomsection
 \addcontentsline{toc}{section}{\textit{Section Matching}}
 
@@ -110,7 +111,42 @@
 \section*{Implementación de Cada Algoritmo}
 \phantomsection
 \addcontentsline{toc}{section}{Implementación de Cada Algoritmo}
-
+\subsection*{Fuerza Bruta (Naive Algorithm)}
+\addcontentsline{toc}{subsection}{Fuerza bruta (Naive Algorithm)}
+% def fuerza_bruta(txt, patron):
+%     N = len(txt)
+%     M = len(patron)
+%     i = 0   # pointer into the text
+%     while i <= (N - M):
+%         j = 0       # pointer into the patter
+%         while j < M:
+%             if txt[i+j] != patron[j]:
+%                 break
+%             j += 1
+%         if j == M:
+%             return i
+%         i += 1
+%     return -1
+\begin{algorithm}
+    \caption{Algoritmo de fuerza bruta}\label{alg:FB}
+    \begin{algorithmic}
+        \Procedure{FuerzaBruta}{(texto, patron)}
+            \State $n \gets \texttt{len(texto)}$
+            \State $m \gets \texttt{len(patron)}$
+            \For {$i \leq (n - m)$} \Comment{Despues de $n-m$ no puede ser el patron}
+                \For {$j < m$} \Comment{Evalua el patron caracter por caracter}
+                    \If {texto[$i + j$] $\neq$ patron[$j$]} \Comment{Evalua si los caracteres son los mismos}
+                        \State break
+                    \EndIf
+                \EndFor
+                \If {$j = m$} \Comment{Si llega al final entonces existe y devuelve la posición}
+                    \State return $i$
+                \EndIf
+            \EndFor
+            \State return -1 \Comment{Si pasa por todo y no encuentra no existe devuelva -1}
+        \EndProcedure
+    \end{algorithmic}
+\end{algorithm}
 %-----------------------------------------------------------------------------------------------------------------------------------------------------
 \section*{Conclusión}
 \phantomsection
@@ -120,6 +156,12 @@
 \appendix
 
 \cite{temp}
+% @online{TwoWaySM,
+%     author = {Maxime Crochemore} and {Dominique Perrin},
+%     title = {Two-Way String-Matching},
+%     year = {1991},
+%     url = {https://igm.univ-mlv.fr/~mac/Articles-PDF/CP-1991-jacm.pdf}
+% }
 \newpage
 % Referencias
 \renewcommand\refname{\large\textbf{Referencias}}
