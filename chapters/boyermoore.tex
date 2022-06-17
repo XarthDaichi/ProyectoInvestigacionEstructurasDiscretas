@@ -1,0 +1,111 @@
+% https://www-igm.univ-mlv.fr/~lecroq/string/node14.html
+
+\section*{Algoritmo de Boyer-Moore}
+\phantomsection
+\addcontentsline{toc}{section}{Algoritmo de Boyer-Moore}
+
+\phantomsection
+\subsection*{Introducción del Algoritmo de Boyer-Moore}
+\addcontentsline{toc}{subsection}{Introducción del Algoritmo de Boyer-Moore}
+
+\phantomsection
+\subsection*{Implementación del Algoritmo de Boyer-Moore}
+\addcontentsline{toc}{subsection}{Implementación del Algoritmo de boyer-Moore}
+
+\begin{algorithm} [H]
+    \caption{Algoritmo de Boyer\_Moore}\label{alg:BM}
+    \begin{algorithmic} [1]
+        \Procedure{Boyer-Moore}{(patron, texto)}
+            \State $sizeP = len(P)$
+            \State $sizeT = len(T)$
+            \State $boyerMooreBadChar = [0] * 256$ \Comment{256 es el número generalmente aceptado como alfabéto}
+            \For{$0 \leq i < sizeP-1$}
+                \State $boyerMooreBadChar[ord(patron[i])] = sizeP - i - 1$
+            \EndFor
+            
+            \State $suff = [0] * sizeP$
+            \State $f = 0$
+            \State $g = sizeP -1$
+            \State $suff[sizeP -1] = sizeP$
+            \For{$sizeP -2 \geq i > -1$}
+                \If{$i > g \land suff[i + sizeP -1 - f] < i - g$}
+                    \State $suff[i] = suff[i + sizeP -1 -f]$
+                \Else
+                    \If{$i < g$}
+                        \State $g = i$
+                    \EndIf
+                    \State $f = i$
+                    \While{$g \geq 0 \land P[g] == P[g + sizeP - 1 - f]$}
+                        \State $g -= 1$
+                    \EndWhile
+                    \State $suff[i] = f - g$
+                \EndIf
+            \EndFor
+
+            \State $boyerMooreGoodSuffix = [sizeP] * sizeP$
+            \For{$0 \leq i < sizeP$}
+                \If{$suff[i] == i + 1$}
+                    \For{$0 \leq j < sizeP - 1 - i$}
+                        \If{$boyerMooreGoodSuffix[j] == sizeP$}
+                            \State $boyerMooreGoodSuffix[j] = sizeP - 1 - i$
+                        \EndIf
+                    \EndFor
+                \EndIf
+            \EndFor
+            \For{$0 \leq i < sizeP-1$}
+                \State $boyerMooreGoodSuffix[sizeP - 1 - suff[i]] = sizeP - 1 - i$
+            \EndFor
+
+            \State $i = 0$
+            \algstore{bm}
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm} [H]
+    \begin{algorithmic} [1]
+        \algrestore{bm}
+                \State $j = 0$
+
+                \While{$j \leq sizeT - sizeP$}
+                \State $i = sizeP - 1$
+                \While{$i != -1 \land patron[i] == texto[i+j]$}
+                    \State $i -= 1$
+                \EndWhile
+                \If{$i < 0$}
+                    \State $print(j)$
+                    \State $j += boyerMooreGoodSuffix[0]$
+                \Else
+                    \State $j += max(boyerMooreGoodSuffix[i], boyerMooreBadChar[ord(T[i+j])] - sizeP + 1 + i)$
+                \EndIf
+            \EndWhile
+        \EndProcedure
+    \end{algorithmic}
+\end{algorithm}
+
+\phantomsection
+\subsection*{Análisis del Algoritmo de Boyer-Moore}
+\addcontentsline{toc}{subsection}{Análisis del Algoritmo de Boyer-Moore}
+
+\phantomsection
+\subsubsection*{Paso 1}
+\addcontentsline{toc}{subsubsection}{Paso 1}
+
+\phantomsection
+\subsubsection*{Paso 2}
+\addcontentsline{toc}{subsubsection}{Paso 2}
+
+\phantomsection
+\subsubsection*{Paso 3}
+\addcontentsline{toc}{subsubsection}{Paso 3}
+
+\phantomsection
+\subsubsection*{Paso 4}
+\addcontentsline{toc}{subsubsection}{Paso 4}
+
+\phantomsection
+\subsubsection*{Paso 5}
+\addcontentsline{toc}{subsubsection}{Paso 5}
+
+\phantomsection
+\subsubsection*{Paso 6}
+\addcontentsline{toc}{subsubsection}{Paso 6}

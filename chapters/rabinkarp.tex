@@ -1,0 +1,93 @@
+\section*{Algoritmo de Karp-Rabin (o Rabin-Karp)}
+\phantomsection
+\addcontentsline{toc}{section}{Algoritmo de Karp-Rabin}
+
+\phantomsection
+\subsection*{Introducción del Algoritmo de Karp-Rabin}
+\addcontentsline{toc}{subsection}{Introducción del Algoritmo de Karp-Rabin}
+
+\phantomsection
+\subsection*{Implementación del Algoritmo de Karp-Rabin}
+\addcontentsline{toc}{subsection}{Implementación del Algoritmo de Karp-Rabin}
+
+\begin{algorithm} [H]
+    \caption{Algoritmo de Karp-Rabin}\label{alg:KR}
+    \begin{algorithmic} [1]
+        \Procedure{karp\_rabin}{(patron, texto)}
+            \State $n = len(patron)$
+            \State $m = len(texto)$
+            \State $d = 256$ \Comment{Este es el alfabeto defecto que sale en varios analisis (caracteres alfabeto inglés)}
+            \State $q = 33554393$ \Comment{Cualquier número primo sirve, pero preferiblemente alto porque los pequeños solo hacen que el algoritmo corra como fuerza bruta porque más hashes concuerdan}
+            \State $h = d^{m-1} mod(q)$
+            \State $ValorHashPatron = 0$
+            \State $ValorHashVentanaTexto = 0$
+            \State $listaIndices = []$
+
+            \For{i = 0 < n}
+                \State $ValorHashPatron = (d*ValorHashPatron + patron[i]) mod(q)$ \Comment{Esta operación sirve con un abecedario normal como tabla ascii, para usarlo en Python el accesor se tiene que meter como parametro de ord()}
+                \State $ValorHashVentanaTexto = (d*ValorHashVentanaTexto + texto[i]) mod(q)$
+            \EndFor
+
+            j = 0 \Comment{definirla afuera para poder usarla dentro del for sin tener que redefinirla cada vez que empiece el for otra vez}
+            \For{$i = 0 \leq m-n$}
+                \If{ValorHashPatron == ValorHashVentanaTexto} \Comment{Solo hacer fuerza Bruta cuando los valores hash concuerdan}
+                    \For{$j = 0 < n$}
+                        \If{$patron[j] != texto[i+j]$} \Comment{Si la fuerza bruta se incumple salga}
+                            \State break
+                        \Else
+                            \State $j += 1$
+                        \EndIf
+                    \EndFor
+                    \If{$j == n$}
+                    \algstore{kr}
+
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+    \begin{algorithmic}[1]
+        \algrestore{kr}
+        \State $listaIndices += [i]$ \Comment{Al llegar al final de la fuerza bruta regista el indice}
+        \EndIf
+    \EndIf 
+    \If{$i < m - n$}
+        \State $ValorHashVentanaTexto = (d * (ValorHashVentanaTexto - texto[i] * h) + texto[i + n]) mod(q)$
+        \If{$ValorHashVentanaTexto < 0$} \Comment{GeeksForGeeks recomienda en caso de que den hashes negativos}
+            \State $ValorHashVentanaTexto += q$
+        \EndIf
+    \EndIf
+\EndFor
+\State return listaIndices
+
+\EndProcedure
+    \end{algorithmic}
+\end{algorithm}
+
+
+\phantomsection
+\subsection*{Análisis del Algoritmo de Karp-Rabin}
+\addcontentsline{toc}{subsection}{Análisis del Algoritmo de Karp-Rabin}
+
+\phantomsection
+\subsubsection*{Paso 1}
+\addcontentsline{toc}{subsubsection}{Paso 1}
+
+\phantomsection
+\subsubsection*{Paso 2}
+\addcontentsline{toc}{subsubsection}{Paso 2}
+
+\phantomsection
+\subsubsection*{Paso 3}
+\addcontentsline{toc}{subsubsection}{Paso 3}
+
+\phantomsection
+\subsubsection*{Paso 4}
+\addcontentsline{toc}{subsubsection}{Paso 4}
+
+\phantomsection
+\subsubsection*{Paso 5}
+\addcontentsline{toc}{subsubsection}{Paso 5}
+
+\phantomsection
+\subsubsection*{Paso 6}
+\addcontentsline{toc}{subsubsection}{Paso 6}

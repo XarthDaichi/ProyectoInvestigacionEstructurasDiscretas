@@ -1,0 +1,112 @@
+\section*{Knuth-Morris-Pratt (KMP)}
+\phantomsection
+\addcontentsline{toc}{section}{Knuth-Morris-Pratt (KMP)}
+
+\phantomsection
+\subsection*{Introducción al Algoritmo de Knuth-Morris-Pratt}
+\addcontentsline{toc}{subsection}{Introducción al Algoritmo de Knuth-Morris-Pratt}
+\quad El algoritmo realiza la búsqueda usando información basada en fallos previos obtenidos del patrón, esto se hace creando una tabla de valores sobre su propio contenido. Esta tabla se crea para ver donde podría darse la siguiente coincidencia sin buscar más de 1 vez los caracteres del texto o cadena de caracteres donde se realiza la búsqueda.
+\\
+\quad La tabla de fallos se encarga de evitar que cada carácter del texto sea analizado más de 1 vez, esto lo logra comparando el patrón consigo mismo para ver que partes se repiten. Este método guarda una lista con números le indican al algoritmo cuando debe devolverse desde la posición actual una vez que el patrón no coincida con el texto.
+
+\quad El texto y el patrón van avanzando simultáneamente mientras ambos coincidan, si una vez coinciden del todo pero la letra siguiente sigue cumpliendo con el patrón, entonces el algoritmo mueve el patrón 1 a la derecha, si no coinciden, entonces el patrón se empieza a devolver para intentar hacerlo coincidir con el texto.
+
+\phantomsection
+\subsection*{Implementación del Algoritmo de Knuth-Morris-Pratt}
+\addcontentsline{toc}{subsection}{Implementación del Algoritmo de Knuth-Morris-Pratt}
+\begin{algorithm} [H]
+    \caption{Algoritmo de Knuth-Morris-Pratt}\label{alg:KMP}
+    \begin{algorithmic} [1]
+        \Procedure{knuth\_morris\_puth}{(texto, patron)}
+            \State $n \gets \texttt{len(texto)}$
+            \State $m \gets \texttt{len(patron)}$
+            \State $resultado = False$
+            \State $listaDeIndices = []$
+            \State $tablaDeFallo = [0]*m$ \Comment{Tabla que se va a usar para devoluciones en los procesamientos}
+            \State $i = 0$
+            \State $j = 0$
+            \Procedure{Procesamiento}{(patron, m, tablaDeFallo)}
+                \State $longitud = 0$ \Comment{longitud del sufijo del prefijo mas largo}
+                \State $i = 1$
+                \While{$i < m$}
+                    \If{$\texttt{patron[$i$]} == \texttt{patron[$longitud$]}$}
+                        \State $longitud += 1$
+                        \State $tablaDeFallo[i] = longitud$
+                        \State $i += 1$
+                    
+                    \Else 
+                        \If {$longitud != 0$} 
+                            \State $longitud = tablaDeFallo[longitud-1]$
+                        \Else
+                            \State $tablaDeFallo[i] = 0$
+                            \State $i += 1$
+                        \EndIf
+                    \EndIf
+                \EndWhile
+            \EndProcedure
+            \Procedure{Búsqueda}{()}
+                \State $i = 0$
+                \State $j = 0$
+                \While{$i < n$}
+                    \If $patron[j] == texto[i]$
+                        \State $i += 1$
+                        \State $j += 1$
+                    \EndIf
+                    \If {$j == m$}
+                        \State $listaDeIndices += [i-j]$
+                        \State $resultado = True$
+                        \State $j = tablaDeFallo[j-1]$
+                    \ElsIf {$i < n \land patron[j] != text[i]$}
+                        \If{$j != 0$}
+                            \State $j = tablaDeFallo[j-1]$
+                        \Else 
+                            \State $i += 1$
+                        \EndIf
+            \algstore{kmp}
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm} [H]
+    \begin{algorithmic} [1]
+    \algrestore{kmp}     
+    \EndIf
+    \EndWhile
+    \EndProcedure
+    \State return listaDeIndices
+    \EndProcedure
+        
+    \end{algorithmic}
+\end{algorithm}
+
+
+
+\subsection*{Análisis del Algoritmo de Knuth-Morris-Pratt}
+\addcontentsline{toc}{subsection}{Análisis del Algoritmo de Knuth-Morris-Pratt}
+\subsubsection*{Paso 1}
+\addcontentsline{toc}{subsubsection}{Paso 1}
+$n + m, n = len(texto) \land m = len(patron)$
+
+\subsubsection*{Paso 2}
+\addcontentsline{toc}{subsubsection}{Paso 2}
+Comparaciones entre patron y texto
+
+\subsubsection*{Paso 3}
+\addcontentsline{toc}{subsubsection}{Paso 3}
+$1 + T_{n-1} + 1 + T_{m-1}$
+
+\subsubsection*{Paso 4}
+\addcontentsline{toc}{subsubsection}{Paso 4}
+$T_{kmp} = n + m$
+
+\subsubsection*{Paso 5}
+\addcontentsline{toc}{subsubsection}{Paso 5}
+$O(n+m)$
+
+\subsubsection*{Paso 6}
+\addcontentsline{toc}{subsubsection}{Paso 6}
+
+% https://discord.com/channels/965795707095232552/965795707736969320/987192403209388072
+
+% https://discord.com/channels/965795707095232552/965795707736969320/987192403209388072
+
+% https://discord.com/channels/965795707095232552/965795707736969320/987192403209388072

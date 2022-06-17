@@ -12,6 +12,7 @@
 
 % Preámbulo
 \documentclass[stu, 11pt, letterpaper, donotrepeattitle, floatsintext, natbib, helv]{apa7}
+\usepackage{lipsum}
 \usepackage[utf8]{inputenc}
 \usepackage{comment}
 \usepackage{marvosym}
@@ -19,8 +20,12 @@
 \usepackage{float}
 \usepackage[normalem]{ulem}
 \usepackage[spanish]{babel} 
+\usepackage{titling}
 \usepackage{algpseudocode}
 \usepackage{algorithm}
+\makeatletter
+\renewcommand{\ALG@name}{Algoritmo}
+\makeatother
 \usepackage{setspace}
 %\usepackage{titling}
 \let\apasubparagraph\subparagraph
@@ -32,12 +37,52 @@
 \useunder{\uline}{\ul}{}
 \newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
 \graphicspath{{./images/}}
+
+\titleformat{\part}{\normalfont\LARGE\bfseries}{\thetitle. \quad }{0pt}{}[{ \titlerule[0.8pt]}]
 \titleformat{\section}{\normalfont\large\bfseries}{\thetitle. \quad }{0pt}{}[{ \titlerule[0.8pt]}]
 \titleformat{\subsection}{\normalfont\bfseries}{}{}{}[]
 
-% Portada
 
+\providecommand{\keywords}[1]
+{
+  \small	
+  \textbf{\textit{Palabras Clave---}} #1
+}
+% Portada
+% \thispagestyle{empty}
+% \title{\LARGE Sobre Matching en Hileras}
+% \author{\large Victor David Coto Solano \\ Diego Quirós Artiñano \\ Derek Rojas Mendoza} % (autores separados, consultar al docente)
+% Manera oficial de colocar los autores:
+%\author{Autor(a) I, Autor(a) II, Autor(a) III, Autor(a) X}
+% \affiliation{Universidad Nacional de Costa Rica}
+% \course{EIF-203: Estructuras Discretas Grupo 01-10am}
+% \professor{Carlos Loria-Saenz}
+% \date{}
+% \duedate{Ciclo I 2022}
+
+% \pretitle{\begin{center}
+%     \vfill}
+% \posttitle{\vskip2cm
+%     \end{center}}
+
+% \preauthor{\begin{center}}
+% \postauthor{ \vskip2cm
+%     Universidad Nacional de Costa Rica \\
+%     EIF-203: Estructuras Discretas Grupo 01-10am \\ 
+%     Carlos Loria-Saenz \\
+%     Ciclo I 2022 \\ 
+%     \\ \vfill \includegraphics[width = 0.4\textwidth]{./UNAImage/UNA.png}\\[\bigskipamount] \vfill \vfill  
+     
+% \end{center}}
+
+
+
+% Palabras claves
 \begin{document}
+% \maketitle
+% \abstract{something, something}
+% \keywords
+
 
 \begin{titlepage}
     \centering
@@ -66,10 +111,13 @@
 \pagenumbering{roman}
     % Contenido
 %-----------------------------------------------------------------------------
-\section*{Resumen}
+% \begin{abstract}
+%     This is the abstract
+% \end{abstract}
+
+% \keywords{one, two, three, four}
 
 %------------------------------------------------------------------------------------
-\section*{Palabras Clave}
 
 \newpage
 %--------------------------------------------------------------------------------------------------
@@ -97,64 +145,40 @@
 \pagenumbering{arabic}
 
 %------------------------------------------------------------------------------------
+
+
+
 \begin{singlespace}
-\section*{Introducción General}
-\phantomsection
-\addcontentsline{toc}{section}{Introducción General}
+\input{chapters/introduction}
 
 %----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-\section*{\textit{String Matching}}% -seccion de string matching con ejemplos ilustrativos propios
-\phantomsection
-\addcontentsline{toc}{section}{\textit{Section Matching}}
+\input{chapters/stringmatching}
 
 %----------------------------------------------------------------------------------------------------------------------------------------
-\section*{Implementación de Cada Algoritmo}
+\part*{Algoritmos}
+% \phantomsection
+% \addcontentsline{toc}{part}{Algoritmos}
+
 \phantomsection
-\addcontentsline{toc}{section}{Implementación de Cada Algoritmo}
-\subsection*{Fuerza Bruta (Naive Algorithm)}
-\addcontentsline{toc}{subsection}{Fuerza bruta (Naive Algorithm)}
-% def fuerza_bruta(txt, patron):
-%     N = len(txt)
-%     M = len(patron)
-%     i = 0   # pointer into the text
-%     while i <= (N - M):
-%         j = 0       # pointer into the patter
-%         while j < M:
-%             if txt[i+j] != patron[j]:
-%                 break
-%             j += 1
-%         if j == M:
-%             return i
-%         i += 1
-%     return -1
-\begin{algorithm}
-    \caption{Algoritmo de fuerza bruta}\label{alg:FB}
-    \begin{algorithmic}
-        \Procedure{FuerzaBruta}{(texto, patron)}
-            \State $n \gets \texttt{len(texto)}$
-            \State $m \gets \texttt{len(patron)}$
-            \For {$i \leq (n - m)$} \Comment{Despues de $n-m$ no puede ser el patron}
-                \For {$j < m$} \Comment{Evalua el patron caracter por caracter}
-                    \If {texto[$i + j$] $\neq$ patron[$j$]} \Comment{Evalua si los caracteres son los mismos}
-                        \State break
-                    \EndIf
-                \EndFor
-                \If {$j = m$} \Comment{Si llega al final entonces existe y devuelve la posición}
-                    \State return $i$
-                \EndIf
-            \EndFor
-            \State return -1 \Comment{Si pasa por todo y no encuentra no existe devuelva -1}
-        \EndProcedure
-    \end{algorithmic}
-\end{algorithm}
+\section*{Introducción}
+\addcontentsline{toc}{section}{Introducción}
+algo
+
+\input{chapters/bruteForce}
+
+\input{chapters/kmp}
+
+\input{chapters/boyermoore}
+
+\input{chapters/rabinkarp}
+
 %-----------------------------------------------------------------------------------------------------------------------------------------------------
-\section*{Conclusión}
-\phantomsection
-\addcontentsline{toc}{section}{Conclusión}
+\input{chapters/conclusion}
 
 %----------------------------------------------------------------------------------------------------------------------------------------------------------------
 \appendix
 
+\cite{temp}
 \cite{temp}
 % @online{TwoWaySM,
 %     author = {Maxime Crochemore} and {Dominique Perrin},
