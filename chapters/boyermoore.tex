@@ -8,6 +8,15 @@
 \subsection*{Introducción del Algoritmo de Boyer-Moore}
 \addcontentsline{toc}{subsection}{Introducción del Algoritmo de Boyer-Moore}
 
+El algoritmo de Boyer-Moore realiza su búsqueda escaneando el patrón deseado desde la posición derecha hasta la posición izquierda. Este utiliza dos heurísticas para completar su cometido, llamadas ‘Bad Character Rule’ y ‘Good Suffix Rule’.
+Para ambas heurísticas el algoritmo realiza un “preprocesamiento” del patrón, donde se elaboran dos tablas de interés:
+\begin{itemize}
+    \item La tabla BC (Bad Character) basa su elaboración en el desplazamiento necesario para ir desde el carácter que se encuentra más a la derecha (del patrón) hasta la primera ocurrencia de los caracteres específicos que lo componen. Si 
+    \item La GS (Good Suffix) se elabora a partir de las coincidencias encontradas entre los sufijos del patrón y los caracteres restantes. Nos da el desplazamiento necesario, desde la izquierda, para encontrar dichas coincidencias. Estas pueden ser exactas (el prefijo aparece exactamente igual) o aproximadas (aparece una parte del sufijo).
+\end{itemize}
+
+Cuando el algoritmo va realizando las comparaciones entre el patrón y el texto y encuentre una discordancia, la decisión entre usar el desplazamiento recomendado por la tabla BC o la tabla GS dependerá netamente de cual de las dos le ofrezca un mayor “salto” o ventaja.
+
 \phantomsection
 \subsection*{Implementación del Algoritmo de Boyer-Moore}
 \addcontentsline{toc}{subsection}{Implementación del Algoritmo de boyer-Moore}
@@ -109,3 +118,8 @@
 \phantomsection
 \subsubsection*{Paso 6}
 \addcontentsline{toc}{subsubsection}{Paso 6}
+
+
+% TODO
+% http://doi.acm.org/10.1145/2431211.2431212
+% https://www.cs.utexas.edu/users/moore/publications/fstrpos.pdf 
