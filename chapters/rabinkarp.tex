@@ -5,6 +5,8 @@
 \phantomsection
 \subsection*{Introducción del Algoritmo de Karp-Rabin}
 \addcontentsline{toc}{subsection}{Introducción del Algoritmo de Karp-Rabin}
+\quad El algoritmo de Karp-Rabin es el único de los que estamos analizando que usa el método de hashing. Para esto utiliza un número primo alto y una formula para sacar el hash value del patrón y de las secciones del texto que se están evaluando. Al encontrar un valor de hash que coincida entonces va a evaluar si la sección que está evaluando en el momento es igual que el patrón, carácter por carácter. Esta es la razón por la cual se utiliza un primo grande, porque al depender de residuos (primo todos los números van a salir modulo si mismo porque el primo solo es modulo 0 con si mismo) si el número evaluando es más grande que el primo entonces puede dar el mismo valor para lo que no debería.
+
 
 \phantomsection
 \subsection*{Implementación del Algoritmo de Karp-Rabin}
@@ -68,27 +70,60 @@
 \subsection*{Análisis del Algoritmo de Karp-Rabin}
 \addcontentsline{toc}{subsection}{Análisis del Algoritmo de Karp-Rabin}
 
-\phantomsection
-\subsubsection*{Paso 1}
-\addcontentsline{toc}{subsubsection}{Paso 1}
+\subsubsection*{Paso 1: Establecer el tamaño n de los datos}
+\addcontentsline{toc}{subsubsection}{Paso 1: Establecer el tamaño n de los datos}
+Las dos variables que varían el tamaño de datos es la cantidad de caracteres del patrón $n$ y la del texto $m$.
 
-\phantomsection
-\subsubsection*{Paso 2}
-\addcontentsline{toc}{subsubsection}{Paso 2}
+\subsubsection*{Paso 2: Determinar las operaciones de interés}
+\addcontentsline{toc}{subsubsection}{Paso 2: Determinar las operaciones de interés}
+Las operaciones de interés son las comparaciones tanto del valor de hash como el carácter y van a contar como 1.
 
-\phantomsection
-\subsubsection*{Paso 3}
-\addcontentsline{toc}{subsubsection}{Paso 3}
+\subsubsection*{Paso 3: Encontrar los casos base}
+\addcontentsline{toc}{subsubsection}{Paso 3: Encontrar los casos base}
+El algoritmo tiene tres sub-ecuaciones el de tiempo que tarda comparar los caracteres de patrón, los caracteres de texto y las comparaciones de los hashes.
+\[T_{patrón}(0) =  0\]
+\[T_{patrón}(1) = 1\]
 
-\phantomsection
-\subsubsection*{Paso 4}
-\addcontentsline{toc}{subsubsection}{Paso 4}
+\[T_{patrón}(n) = 1 + T_{patrón}(n-1)\]
 
-\phantomsection
-\subsubsection*{Paso 5}
-\addcontentsline{toc}{subsubsection}{Paso 5}
-El tiempo de este algoritmo es O(n+m) normalmente, pero en el peor de los casos termina siendo igual que fuerza bruta o O(nm) siendo n y m longitudes de texto y patron
+\[T_{texto}(0) =  0\]
+\[T_{texto}(1) = 1\]
 
-\phantomsection
+\[T_{texto}(m) = 1 + T_{texto}(m-1)\]
+
+\[T_{hashes}(0) = 0\]
+\[T_{hashes}(1) = 1\]
+\[T_{hashes}(m) = 1 + T_{hashes}(m-1)\]
+
+
+\[T_{Karp-Rabin}(n,m) = T_{hashes}(m) + T_{texto}(m) * T_{patrón}(n)\]
+
+Se hace de esta manera porque siempre se evalúan los hashes y después por aparte se hace un fuerza bruta de la sección.
+\subsubsection*{Paso 4: Evaluando la ecuación recursiva}
+\addcontentsline{toc}{subsubsection}{Paso 4: Evaluando la ecuación recursiva}
+
+\[T_{patrón}(n) = 1 + 1 + 1 + 1 ... + 1 + 1\]
+
+\[T_{patrón}(n) = n \]
+
+\[T_{texto}(m) = 1 + 1 + 1 + 1 ... + 1 + 1\]
+
+\[T_{texto}(m) = m \]
+
+\[T_{hashes}(m) = 1 + 1 + 1 + 1 ... + 1 + 1\]
+
+\[T_{hashes}(m) = m \]
+
+\[T_{Karp-Rabin}(n,m) = m + m * n\]
+
+\subsubsection*{Paso 5: O-grande}
+\addcontentsline{toc}{subsubsection}{Paso 5: O-grande}
+
+Dado a lo que evaluamos en los últimos pasos se sabe que O-grande es $O(m) + O(m*n) \sim O(m*n)$
+
+Es importante notar que ese tiempo ocurre cuando todos los caracteres son lo mismo entonces tiene que evaluar todos los caracteres. El tiempo normal es $O(m) + O(cn) \sim O(m+n), c$ constante.
+
+
 \subsubsection*{Paso 6}
 \addcontentsline{toc}{subsubsection}{Paso 6}
+*instrumentación
