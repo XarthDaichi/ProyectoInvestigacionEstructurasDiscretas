@@ -4,13 +4,15 @@
 
 \phantomsection
 \subsection*{Introducción del Algoritmo de Karp-Rabin}
-\addcontentsline{toc}{subsection}{Introducción del Algoritmo de Karp-Rabin}
+% \addcontentsline{toc}{subsection}{Introducción del Algoritmo de Karp-Rabin}
 \quad El algoritmo de Karp-Rabin es el único de los que estamos analizando que usa el método de hashing. Para esto utiliza un número primo alto y una formula para sacar el hash value del patrón y de las secciones del texto que se están evaluando. Al encontrar un valor de hash que coincida entonces va a evaluar si la sección que está evaluando en el momento es igual que el patrón, carácter por carácter. Esta es la razón por la cual se utiliza un primo grande, porque al depender de residuos (primo todos los números van a salir modulo si mismo porque el primo solo es modulo 0 con si mismo) si el número evaluando es más grande que el primo entonces puede dar el mismo valor para lo que no debería.
 
 
 \phantomsection
 \subsection*{Implementación del Algoritmo de Karp-Rabin}
-\addcontentsline{toc}{subsection}{Implementación del Algoritmo de Karp-Rabin}
+% \addcontentsline{toc}{subsection}{Implementación del Algoritmo de Karp-Rabin}
+
+(Con ayuda de \cite{Cormen_Leiserson_Rivest_Stein_2009}, \cite{HakakSaqibIqbal2019ESMA}, \cite{KRGFG} y \cite{Karp-Rabin})
 
 \begin{algorithm} [H]
     \caption{Algoritmo de Karp-Rabin}\label{alg:KR}
@@ -68,7 +70,7 @@
 
 \phantomsection
 \subsection*{Análisis del Algoritmo de Karp-Rabin}
-\addcontentsline{toc}{subsection}{Análisis del Algoritmo de Karp-Rabin}
+% \addcontentsline{toc}{subsection}{Análisis del Algoritmo de Karp-Rabin}
 
 \subsubsection*{Paso 1: Establecer el tamaño n de los datos}
 % \addcontentsline{toc}{subsubsection}{Paso 1: Establecer el tamaño n de los datos}
@@ -126,4 +128,8 @@ Es importante notar que ese tiempo ocurre cuando todos los caracteres son lo mis
 
 \subsubsection*{Paso 6}
 % \addcontentsline{toc}{subsubsection}{Paso 6}
-*instrumentación
+\begin{figure} [H]
+    \includegraphics[width=0.5\textwidth]{../codigoPythonJupyter/rk/Final.png}
+    \caption{Karp-Rabin (Apéndice rabinkarp.ipynb)}
+    \label{fig:kr}
+\end{figure}

@@ -23,11 +23,12 @@
 \usepackage{titling}
 \usepackage{algpseudocode}
 \usepackage{algorithm}
+\usepackage{wrapfig}
 \makeatletter
 \renewcommand{\ALG@name}{Algoritmo}
 \makeatother
 \usepackage{setspace}
-%\usepackage{titling}
+\usepackage{titling}
 \let\apasubparagraph\subparagraph
 \let\subparagraph\paragraph
 \usepackage[compact]{titlesec}
@@ -42,80 +43,87 @@
 \titleformat{\section}{\normalfont\large\bfseries}{\thetitle. \quad }{0pt}{}[{ \titlerule[0.8pt]}]
 \titleformat{\subsection}{\normalfont\bfseries}{}{}{}[]
 
+\renewenvironment{abstract}{%
+    \small
+    \begin{center}%
+        {\bfseries \abstractname\vspace{-.5em}\vspace{0pt}}%
+    \end{center}%
+    \quotation
+    }
+{\endquotation}
 
-\providecommand{\keywords}[1]
-{
-  \small	
-  \textbf{\textit{Palabras Clave---}} #1
-}
+% \providecommand{\keywords}[1]
+% {
+%   \small	
+%   \textbf{\textit{Palabras Clave---}} #1
+% }
 % Portada
-% \thispagestyle{empty}
-% \title{\LARGE Sobre Matching en Hileras}
-% \author{\large Victor David Coto Solano \\ Diego Quirós Artiñano \\ Derek Rojas Mendoza} % (autores separados, consultar al docente)
-% Manera oficial de colocar los autores:
-%\author{Autor(a) I, Autor(a) II, Autor(a) III, Autor(a) X}
-% \affiliation{Universidad Nacional de Costa Rica}
-% \course{EIF-203: Estructuras Discretas Grupo 01-10am}
-% \professor{Carlos Loria-Saenz}
-% \date{}
-% \duedate{Ciclo I 2022}
 
-% \pretitle{\begin{center}
-%     \vfill}
-% \posttitle{\vskip2cm
-%     \end{center}}
-
-% \preauthor{\begin{center}}
-% \postauthor{ \vskip2cm
-%     Universidad Nacional de Costa Rica \\
-%     EIF-203: Estructuras Discretas Grupo 01-10am \\ 
-%     Carlos Loria-Saenz \\
-%     Ciclo I 2022 \\ 
-%     \\ \vfill \includegraphics[width = 0.4\textwidth]{./UNAImage/UNA.png}\\[\bigskipamount] \vfill \vfill  
-     
-% \end{center}}
 
 
 
 % Palabras claves
 \begin{document}
-% \maketitle
-% \abstract{something, something}
-% \keywords
+\title{\LARGE Sobre Matching en Hileras}
+\author{\large Victor David Coto Solano \vskip0.3ex Diego Quirós Artiñano \vskip0.3ex Derek Rojas Mendoza} % (autores separados, consultar al docente)
+% Manera oficial de colocar los autores:
+% \author{Autor(a) I, Autor(a) II, Autor(a) III, Autor(a) X}
+\affiliation{Universidad Nacional de Costa Rica}
+\course{EIF-203: Estructuras Discretas Grupo 01-10am}
+\professor{Carlos Loria-Saenz}
+\date{}
+\duedate{Ciclo I 2022}
 
+\pretitle{\begin{center}}
+\posttitle{\vskip1cm
+    \end{center}}
 
-\begin{titlepage}
-    \centering
-    \vfill
-    \LARGE Sobre Matching en Hileras\\
-    \vskip2cm
-    \large Victor David Coto Solano \\
-    \large Diego Quirós Artiñano \\
-    \large Derek Rojas Mendoza \\
-    \vskip2cm
-    Universidad Nacional de Costa Rica \\
+\preauthor{\begin{center}}
+\postauthor{\end{center}}
+
+\begin{titlingpage}
+    \thispagestyle{empty}
+    \maketitle
+    \begin{center} Universidad Nacional de Costa Rica \\
     EIF-203: Estructuras Discretas Grupo 01-10am \\ 
     Carlos Loria-Saenz \\
     Ciclo I 2022 \\
-    \vfill
-    \includegraphics[width = 0.4\textwidth]{./UNAImage/UNA.png} \\
-    \vfill
-    \vfill
-    % (autores separados, consultar al docente)
-    % Manera oficial de colocar los autores:
-    %\author{Autor(a) I, Autor(a) II, Autor(a) III, Autor(a) X}
-\end{titlepage}
+    \includegraphics[width = 0.3\textwidth]{./UNAImage/UNA.png}
+    \end{center}
+    \begin{abstract}
+        String Matching son tipos de algoritmos esenciales para el mundo del siglo 21 debido a las aplicaciones variadas que este presenta. La importancia de poder entender y usar estos algoritmos va a ayudar en el ámbito laboral del futuro a corto y largo plazo. Nuestra investigación busca explicar de manera fácil 4 algoritmos diferentes para visualizar la eficiencia de este proceso.
+    \end{abstract}
+    \textit{\textbf{Keywords:} String Matching, Fuerza Bruta, Knuth-Morris-Pratt, Boyer-Moore, Karp-Rabin, O-grande, ADN, Huntington}
+\end{titlingpage}
+
+
+% \begin{titlepage}
+%     \centering
+%     \vfill
+%     \LARGE Sobre Matching en Hileras\\
+%     \vskip2cm
+%     \large Victor David Coto Solano \\
+%     \large Diego Quirós Artiñano \\
+%     \large Derek Rojas Mendoza \\
+%     \vskip2cm
+%     Universidad Nacional de Costa Rica \\
+%     EIF-203: Estructuras Discretas Grupo 01-10am \\ 
+%     Carlos Loria-Saenz \\
+%     Ciclo I 2022 \\
+%     \vfill
+%     \includegraphics[width = 0.4\textwidth]{./UNAImage/UNA.png} \\
+%     \vfill
+%     \vfill
+%     % (autores separados, consultar al docente)
+%     % Manera oficial de colocar los autores:
+%     %\author{Autor(a) I, Autor(a) II, Autor(a) III, Autor(a) X}
+% \end{titlepage}
 
 
 % Índices
 \pagenumbering{roman}
     % Contenido
 %-----------------------------------------------------------------------------
-% \begin{abstract}
-%     This is the abstract
-% \end{abstract}
-
-% \keywords{one, two, three, four}
 
 %------------------------------------------------------------------------------------
 
@@ -172,6 +180,32 @@
 
 \input{chapters/rabinkarp}
 
+\section*{Comparación de todos}
+
+
+% para probar que BM no es tan bueno para datos pequeños https://stackoverflow.com/questions/24806753/knuth-morris-pratt-vs-boyer-moore-binary-alphabet-vs-alphabet-with-large-numbe 
+\begin{figure} [H]
+    \includegraphics[width=0.5\textwidth]{../codigoPythonJupyter/Todos.png}
+    \caption{Todos los algoritmos comparados (Apéndice todos.ipynb)}
+    \label{fig:all}
+\end{figure}
+
+Con esto podemos concluir que poniendo todos los algoritmos en el peor de los casos (todos los caracteres iguales) el kmp es el más eficiente.
+
+Además decidimos probar los tres con un texto grande (buscar "Harry" dentro del primer libro de Harry Potter) y correrlo con el timeit de Python: (ver apéndice de pruebas.ipynb para más info)
+\begin{table} [H]
+    \begin{tabular}{| c | c | c | c |}
+        \hline
+        Fuerza Bruta & Knuth-Morris-Pratt & Boyer-Moore & Karp-Rabin \\
+        \hline
+        92.39191730198218 s & 93.05609979297151 s & 138.52656350799953 s & 170.72219764100737 s \\
+        \hline
+    \end{tabular}
+    \caption{Harry Potter 1 buscando Harry}
+    \label{tab:hp}
+\end{table}
+
+
 \input{chapters/adn}
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -180,12 +214,7 @@
 %----------------------------------------------------------------------------------------------------------------------------------------------------------------
 \appendix
 
-% @online{TwoWaySM,
-%     author = {Maxime Crochemore} and {Dominique Perrin},
-%     title = {Two-Way String-Matching},
-%     year = {1991},
-%     url = {https://igm.univ-mlv.fr/~mac/Articles-PDF/CP-1991-jacm.pdf}
-% }
+
 \newpage
 % Referencias
 \renewcommand\refname{\large\textbf{Referencias}}

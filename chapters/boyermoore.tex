@@ -6,7 +6,7 @@
 
 \phantomsection
 \subsection*{Introducción del Algoritmo de Boyer-Moore}
-\addcontentsline{toc}{subsection}{Introducción del Algoritmo de Boyer-Moore}
+% \addcontentsline{toc}{subsection}{Introducción del Algoritmo de Boyer-Moore}
 
 El algoritmo de Boyer-Moore realiza su búsqueda escaneando el patrón deseado desde la posición derecha hasta la posición izquierda. Este utiliza dos heurísticas para completar su cometido, llamadas ‘Bad Character Rule’ y ‘Good Suffix Rule’.
 Para ambas heurísticas el algoritmo realiza un “preprocesamiento” del patrón, donde se elaboran dos tablas de interés:
@@ -19,7 +19,8 @@ Cuando el algoritmo va realizando las comparaciones entre el patrón y el texto 
 
 \phantomsection
 \subsection*{Implementación del Algoritmo de Boyer-Moore}
-\addcontentsline{toc}{subsection}{Implementación del Algoritmo de boyer-Moore}
+% \addcontentsline{toc}{subsection}{Implementación del Algoritmo de boyer-Moore}
+(Con ayuda de \cite{boyer-moor_algorithm_1997}, \cite{101145359842359859}, \cite{gusfield_1997}, \cite{exactOnline} y \cite{pdfBoyer})
 
 \begin{algorithm} [H]
     \caption{Algoritmo de Boyer\_Moore}\label{alg:BM}
@@ -91,9 +92,10 @@ Cuando el algoritmo va realizando las comparaciones entre el patrón y el texto 
     \end{algorithmic}
 \end{algorithm}
 
+
 \phantomsection
 \subsection*{Análisis del Algoritmo de Boyer-Moore}
-\addcontentsline{toc}{subsection}{Análisis del Algoritmo de Boyer-Moore}
+% \addcontentsline{toc}{subsection}{Análisis del Algoritmo de Boyer-Moore}
 
 \subsubsection*{Paso 1: Establecer el tamaño n de los datos}
 % \addcontentsline{toc}{subsubsection}{Paso 1: Establecer el tamaño n de los datos}
@@ -160,10 +162,16 @@ Eso entonces se junta para que la ecuación de tiempo del Boyer-Moore de:
 \subsubsection*{Paso 5: O-grande}
 % \addcontentsline{toc}{subsubsection}{Paso 5}
 Dado a los pasos anteriores podemos concluir que el O-grande de Boyer-Moore es $O(w) + O(n^2) + O(n*m) \sim O(n*m)$
-Es importante destacar que aunque en el peor de los casos es $n*m$, pero que es considerado el más eficiente de los 4 porque el O-grande normal es $O(\frac{n}{m})$
+Es importante destacar que aunque en el peor de los casos es $n*m$, pero que es considerado el más eficiente de los 4 porque el O-grande normal es $O(\frac{n}{m})$ como lo describen \cite{TwoWaySM}
+
 \subsubsection*{Paso 6}
 % \addcontentsline{toc}{subsubsection}{Paso 6}
-
+\begin{figure} [H]
+    \includegraphics[width=0.5\textwidth]{../codigoPythonJupyter/bm/Final.png}
+    \caption{Boyer-Moore (Apéndice boyermoore.ipynb)}
+    \label{fig:bm}
+\end{figure}
+Este generamos dos porque en proceso de hacer pruebas nos percatamos que la generación de las tablas al ser uno o la otra no tenían que contarse todo el tiempo y creamos un if para que generara la más rápida.
 
 % TODO
 % http://doi.acm.org/10.1145/2431211.2431212

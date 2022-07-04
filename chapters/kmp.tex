@@ -4,7 +4,7 @@
 
 \phantomsection
 \subsection*{Introducción al Algoritmo de Knuth-Morris-Pratt}
-\addcontentsline{toc}{subsection}{Introducción al Algoritmo de Knuth-Morris-Pratt}
+% \addcontentsline{toc}{subsection}{Introducción al Algoritmo de Knuth-Morris-Pratt}
 \quad Es un algoritmo que hace las comparaciones de izquierda a derecha, este realiza la búsqueda usando información basada en fallos previos obtenidos del patrón, esto se hace en una fase de “procesamiento” que crea una tabla de valores sobre su propio contenido. Esta tabla se crea para ver donde podría darse la siguiente coincidencia sin buscar más de 1 vez los caracteres del texto o cadena de caracteres donde se realiza la búsqueda, el algoritmo es de tiempo O~(n + m) siendo n = el tiempo de la fase de “searching” y m = el tiempo de la fase de procesamiento.
 \\
 \quad La tabla de fallos se encarga de evitar que cada carácter del texto sea analizado más de 1 vez, esto lo logra comparando el patrón consigo mismo para ver que partes se repiten. Este método guarda una lista con números le indican al algoritmo cuando debe devolverse desde la posición actual una vez que el patrón no coincida con el texto.
@@ -13,7 +13,9 @@
 
 \phantomsection
 \subsection*{Implementación del Algoritmo de Knuth-Morris-Pratt}
-\addcontentsline{toc}{subsection}{Implementación del Algoritmo de Knuth-Morris-Pratt}
+% \addcontentsline{toc}{subsection}{Implementación del Algoritmo de Knuth-Morris-Pratt}
+(Con ayuda de \cite{KMP1}, \cite{KMPWiki} y \cite{KMPGFG})
+
 \begin{algorithm} [H]
     \caption{Algoritmo de Knuth-Morris-Pratt}\label{alg:KMP}
     \begin{algorithmic} [1]
@@ -81,7 +83,7 @@
 
 
 \subsection*{Análisis del Algoritmo de Knuth-Morris-Pratt}
-\addcontentsline{toc}{subsection}{Análisis del Algoritmo de Knuth-Morris-Pratt}
+% \addcontentsline{toc}{subsection}{Análisis del Algoritmo de Knuth-Morris-Pratt}
 \subsubsection*{Paso 1: Establecer el tamaño n de los datos}
 % \addcontentsline{toc}{subsubsection}{Paso 1: Establecer el tamaño n de los datos}
 El tamaño esta dado por la cantidad de elementos en el texto * la cantidad de elementos en el patron
@@ -113,7 +115,13 @@ con kmpS = KMP search y kmpP = MKP Processing
 \subsubsection*{Paso 6}
 % \addcontentsline{toc}{subsubsection}{Paso 6}
 
-*Instrumentación %TODO
+\begin{figure} [H]
+    \includegraphics[width=0.5\textwidth]{../codigoPythonJupyter/kmp/Final.png}
+    \caption{Knuth-Morris-Pratt (Apéndice kmp.ipynb)}
+    \label{fig:kmp}
+\end{figure}
+
+%TODO
 % https://discord.com/channels/965795707095232552/965795707736969320/990781609223540746
 % https://discord.com/channels/965795707095232552/965795707736969320/987192403209388072
 
