@@ -71,15 +71,15 @@
 \addcontentsline{toc}{subsection}{Análisis del Algoritmo de Karp-Rabin}
 
 \subsubsection*{Paso 1: Establecer el tamaño n de los datos}
-\addcontentsline{toc}{subsubsection}{Paso 1: Establecer el tamaño n de los datos}
-Las dos variables que varían el tamaño de datos es la cantidad de caracteres del patrón $n$ y la del texto $m$.
+% \addcontentsline{toc}{subsubsection}{Paso 1: Establecer el tamaño n de los datos}
+Las dos variables que varían el tamaño de datos es la cantidad de caracteres del patrón $n$ y la del texto $m$. Entonces termina siendo $len(patrón) + len(texto) = n + m$
 
 \subsubsection*{Paso 2: Determinar las operaciones de interés}
-\addcontentsline{toc}{subsubsection}{Paso 2: Determinar las operaciones de interés}
+% \addcontentsline{toc}{subsubsection}{Paso 2: Determinar las operaciones de interés}
 Las operaciones de interés son las comparaciones tanto del valor de hash como el carácter y van a contar como 1.
 
 \subsubsection*{Paso 3: Encontrar los casos base}
-\addcontentsline{toc}{subsubsection}{Paso 3: Encontrar los casos base}
+% \addcontentsline{toc}{subsubsection}{Paso 3: Encontrar los casos base}
 El algoritmo tiene tres sub-ecuaciones el de tiempo que tarda comparar los caracteres de patrón, los caracteres de texto y las comparaciones de los hashes.
 \[T_{patrón}(0) =  0\]
 \[T_{patrón}(1) = 1\]
@@ -100,7 +100,7 @@ El algoritmo tiene tres sub-ecuaciones el de tiempo que tarda comparar los carac
 
 Se hace de esta manera porque siempre se evalúan los hashes y después por aparte se hace un fuerza bruta de la sección.
 \subsubsection*{Paso 4: Evaluando la ecuación recursiva}
-\addcontentsline{toc}{subsubsection}{Paso 4: Evaluando la ecuación recursiva}
+% \addcontentsline{toc}{subsubsection}{Paso 4: Evaluando la ecuación recursiva}
 
 \[T_{patrón}(n) = 1 + 1 + 1 + 1 ... + 1 + 1\]
 
@@ -117,7 +117,7 @@ Se hace de esta manera porque siempre se evalúan los hashes y después por apar
 \[T_{Karp-Rabin}(n,m) = m + m * n\]
 
 \subsubsection*{Paso 5: O-grande}
-\addcontentsline{toc}{subsubsection}{Paso 5: O-grande}
+% \addcontentsline{toc}{subsubsection}{Paso 5: O-grande}
 
 Dado a lo que evaluamos en los últimos pasos se sabe que O-grande es $O(m) + O(m*n) \sim O(m*n)$
 
@@ -125,5 +125,5 @@ Es importante notar que ese tiempo ocurre cuando todos los caracteres son lo mis
 
 
 \subsubsection*{Paso 6}
-\addcontentsline{toc}{subsubsection}{Paso 6}
+% \addcontentsline{toc}{subsubsection}{Paso 6}
 *instrumentación

@@ -55,15 +55,15 @@
 \addcontentsline{toc}{subsection}{Análisis del Algroitmo de Fuerza Bruta}
 
 \subsubsection*{Paso 1: Establecer el tamaño n de los datos}
-\addcontentsline{toc}{subsubsection}{Paso 1: Establecer el tamaño n de los datos}
-Hay dos variables que determinan el tamaño de los datos, estos serían n como la cantidad de caracteres del patrón y m la cantidad del texto.
+% \addcontentsline{toc}{subsubsection}{Paso 1: Establecer el tamaño n de los datos}
+Hay dos variables que determinan el tamaño de los datos, estos serían $n$ como la cantidad de caracteres del patrón y $m$ la cantidad del texto. Entonces termina siendo $len(patrón) + len(texto) = n + m$
 
 \subsubsection*{Paso 2: Determinar las operaciones de interés}
-\addcontentsline{toc}{subsubsection}{Paso 2: Determinar las operaciones de interés}
+% \addcontentsline{toc}{subsubsection}{Paso 2: Determinar las operaciones de interés}
 Las operaciones de interés del algoritmo son las comparaciones de los caracteres. Estos tendrán valor de 1 cada uno.
 
 \subsubsection*{Paso 3: Encontrar los casos base}
-\addcontentsline{toc}{subsubsection}{Paso 3: Encontrar los casos base}
+% \addcontentsline{toc}{subsubsection}{Paso 3: Encontrar los casos base}
 Este algoritmo implica la combinación de las dos variables de tamaño un tiempo de recorrido del patrón y otro del texto.
 
 \[T_{patrón}(0) =  0\]
@@ -80,7 +80,7 @@ y esto se junta para que de (porque para cada caracter del texto se evalúan tod
 \[T_{Fuerza Bruta}(n,m) = T_{texto}(m) * T_{patrón}(n)\]
 
 \subsubsection*{Paso 4: Evaluando la ecuación recursiva}
-\addcontentsline{toc}{subsubsection}{Paso 4: Evaluando la ecuación recursiva}
+% \addcontentsline{toc}{subsubsection}{Paso 4: Evaluando la ecuación recursiva}
 
 Como es una suma de unos
 \[T_{patrón}(n) = 1 + 1 + 1 + 1 ... + 1 + 1\]
@@ -96,9 +96,9 @@ Con la ecuación que sacamos en el paso anterior y la evaluación de las sub-ecu
 
 
 \subsubsection*{Paso 5: O-grande}
-\addcontentsline{toc}{subsubsection}{Paso 5: O-grande}
+% \addcontentsline{toc}{subsubsection}{Paso 5: O-grande}
 Con la ecuación de tiempo entonces concluimos que el O-grande del algoritmo es: $O(n*m)$
 
 \subsubsection*{Paso 6}
-\addcontentsline{toc}{subsubsection}{Paso 6}
+% \addcontentsline{toc}{subsubsection}{Paso 6}
 *instrumentación

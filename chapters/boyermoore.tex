@@ -96,27 +96,73 @@ Cuando el algoritmo va realizando las comparaciones entre el patrón y el texto 
 \addcontentsline{toc}{subsection}{Análisis del Algoritmo de Boyer-Moore}
 
 \subsubsection*{Paso 1: Establecer el tamaño n de los datos}
-\addcontentsline{toc}{subsubsection}{Paso 1: Establecer el tamaño n de los datos}
-
+% \addcontentsline{toc}{subsubsection}{Paso 1: Establecer el tamaño n de los datos}
+El tamaño de los datos esta dado por m + n (Siendo ‘m’ el tamaño del texto y ‘n’ el tamaño del patrón)
 
 \subsubsection*{Paso 2: Determinar las operaciones de interés}
-\addcontentsline{toc}{subsubsection}{Paso 2: Determinar las operaciones de interés}
+% \addcontentsline{toc}{subsubsection}{Paso 2: Determinar las operaciones de interés}
+Las operaciones van a variar dependiendo del módulo. Principalmente, utilizaremos de referencia aquellas relacionadas a comparaciones (‘==’, ¡‘!=’) y asignaciones (‘=’)
 
+\subsubsection*{Paso 3: Encontrar los casos base}
+% \addcontentsline{toc}{subsubsection}{Paso 3}
+Dividiremos esta sección en Preprocesamiento y Búsqueda, de la forma:
+\begin{itemize}
+    \item Preprocesamiento
+    \begin{itemize}
+        \item Heurística de caracteres malos ($w$ es el tamaño del alfabeto)
+        \[T_{HCM}(0) = w \hskip1cm \texttt{si } n = 0\]
+        \[T_{HCM}(n) = 1 + T_{HCM}(n-1) \hskip1cm \texttt{si } n > 0\]
+        \item Herística de sufijos buenos
+        \[T_{HSB}(0) = 0 \hskip1cm \texttt{si } n \leq 1\]
+        \[T_{HSB}(n) = 1 + (n-1) + T_{HSB}(n-1) \hskip1cm \texttt{si } n > 1\]
+    \end{itemize}
+    \item Búsqueda
+    \[T_{patrón}(0) =  0\]
+    \[T_{patrón}(1) = 1\]
 
-\subsubsection*{Paso 3}
-\addcontentsline{toc}{subsubsection}{Paso 3}
+    \[T_{patrón}(n) = 1 + T_{patrón}(n-1)\]
 
+    \[T_{texto}(0) =  0\]
+    \[T_{texto}(1) = 1\]
 
-\subsubsection*{Paso 4}
-\addcontentsline{toc}{subsubsection}{Paso 4}
+    \[T_{texto}(m) = 1 + T_{texto}(m-1)\]
+    \[T_{Búsqueda}(n,m) = T_{patrón}(n) * T_{texto}(m)\]
+\end{itemize}
+Eso entonces se junta para que la ecuación de tiempo del Boyer-Moore de:
+\[T_{Boyer-Moore}(m,n) = T_{HCM}(n) + T_{HSB}(n) + T_{Búsqueda}(n,m)\]
 
+\subsubsection*{Paso 4: Evaluando la ecuación recursiva}
+% \addcontentsline{toc}{subsubsection}{Paso 4}
+\begin{itemize}
+    \item Preprocesamiento
+    \begin{itemize}
+        \item Heurística de caracteres malos
+        \[T_{HCM}(n) = 1 + 1+ 1+ ... + 1 + w\]
+        \[T_{HCM}(n) = n + w\]
+        \item Heurística de sufijos buenos
+        \[T_{HSB}(n) = 1 +  (n-1) + 1 + (n-2) + 1 + (n-3) ... + 0\]
+        \[T_{HSB}(n) = n + (n-1) + (n-2) + (n-3) ... + 0\]
+        \[T_{HSB}(n) = \frac{n*(n+1)}{2} = \frac{n^2 + n}{2}\]
+    \end{itemize}
+    \item Búsqueda
+    \[T_{patrón}(n) = 1 + 1 + 1 + 1 ... + 1 + 1\]
 
-\subsubsection*{Paso 5}
-\addcontentsline{toc}{subsubsection}{Paso 5}
+    \[T_{patrón}(n) = n \]
 
+    \[T_{texto}(m) = 1 + 1 + 1 + 1 ... + 1 + 1\]
 
+    \[T_{texto}(m) = m \]
+    \[T_{Búsqueda}(n,m) = n * m\]
+\end{itemize}
+
+\[T_{Boyer-Moore}(n,m) = (n+w) + (\frac{n^2 + n}{2}) + n*m\]
+
+\subsubsection*{Paso 5: O-grande}
+% \addcontentsline{toc}{subsubsection}{Paso 5}
+Dado a los pasos anteriores podemos concluir que el O-grande de Boyer-Moore es $O(w) + O(n^2) + O(n*m) \sim O(n*m)$
+Es importante destacar que aunque en el peor de los casos es $n*m$, pero que es considerado el más eficiente de los 4 porque el O-grande normal es $O(\frac{n}{m})$
 \subsubsection*{Paso 6}
-\addcontentsline{toc}{subsubsection}{Paso 6}
+% \addcontentsline{toc}{subsubsection}{Paso 6}
 
 
 % TODO
