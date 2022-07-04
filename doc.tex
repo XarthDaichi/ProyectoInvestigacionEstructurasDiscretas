@@ -24,6 +24,10 @@
 \usepackage{algpseudocode}
 \usepackage{algorithm}
 \usepackage{wrapfig}
+\usepackage{tikz}
+\usetikzlibrary{positioning,matrix, arrows.meta, backgrounds}
+\usetikzlibrary{matrix,backgrounds}
+\usepackage{subfigure}
 \makeatletter
 \renewcommand{\ALG@name}{Algoritmo}
 \makeatother
@@ -186,13 +190,13 @@
 % para probar que BM no es tan bueno para datos pequeños https://stackoverflow.com/questions/24806753/knuth-morris-pratt-vs-boyer-moore-binary-alphabet-vs-alphabet-with-large-numbe 
 \begin{figure} [H]
     \includegraphics[width=0.5\textwidth]{../codigoPythonJupyter/Todos.png}
-    \caption{Todos los algoritmos comparados (Apéndice todos.ipynb)}
+    \caption{Todos los algoritmos comparados (ver Anexo todos.ipynb)}
     \label{fig:all}
 \end{figure}
 
 Con esto podemos concluir que poniendo todos los algoritmos en el peor de los casos (todos los caracteres iguales) el kmp es el más eficiente.
 
-Además decidimos probar los tres con un texto grande (buscar "Harry" dentro del primer libro de Harry Potter) y correrlo con el timeit de Python: (ver apéndice de pruebas.ipynb para más info)
+Además decidimos probar los tres con un texto grande (buscar "Harry" dentro del primer libro de Harry Potter) y correrlo con el timeit de Python: (ver Anexo de pruebas.ipynb para más info)
 \begin{table} [H]
     \begin{tabular}{| c | c | c | c |}
         \hline

@@ -43,22 +43,7 @@
                             \State $tablaDeFallo[i] = 0$
                             \State $i += 1$
                         \EndIf
-                    \EndIf
-                \EndWhile
-            \EndProcedure
-            \Procedure{Búsqueda}{()}
-                \State $i = 0$
-                \State $j = 0$
-                \While{$i < n$}
-                    \If $patron[j] == texto[i]$
-                        \State $i += 1$
-                        \State $j += 1$
-                        \EndIf
-                        \If {$j == m$}
-        \State $listaDeIndices += [i-j]$
-        \State $resultado = True$
-        \State $j = tablaDeFallo[j-1]$
-        \ElsIf {$i < n \land patron[j] != text[i]$}
+
             \algstore{kmp}
     \end{algorithmic}
 \end{algorithm}
@@ -66,6 +51,22 @@
 \begin{algorithm} [H]
     \begin{algorithmic} [1]
     \algrestore{kmp}
+    \EndIf
+    \EndWhile
+\EndProcedure
+\Procedure{Búsqueda}{()}
+    \State $i = 0$
+    \State $j = 0$
+    \While{$i < n$}
+        \If $patron[j] == texto[i]$
+            \State $i += 1$
+            \State $j += 1$
+            \EndIf
+            \If {$j == m$}
+\State $listaDeIndices += [i-j]$
+\State $resultado = True$
+\State $j = tablaDeFallo[j-1]$
+\ElsIf {$i < n \land patron[j] != text[i]$}
         \If{$j != 0$}
             \State $j = tablaDeFallo[j-1]$
         \Else 
@@ -117,7 +118,7 @@ con kmpS = KMP search y kmpP = MKP Processing
 
 \begin{figure} [H]
     \includegraphics[width=0.5\textwidth]{../codigoPythonJupyter/kmp/Final.png}
-    \caption{Knuth-Morris-Pratt (Apéndice kmp.ipynb)}
+    \caption{Knuth-Morris-Pratt (Anexo kmp.ipynb)}
     \label{fig:kmp}
 \end{figure}
 

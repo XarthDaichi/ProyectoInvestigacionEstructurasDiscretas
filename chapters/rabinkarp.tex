@@ -43,15 +43,7 @@
                         \EndIf
                     \EndFor
                     \If{$j == n$}
-                    \algstore{kr}
-
-    \end{algorithmic}
-\end{algorithm}
-
-\begin{algorithm}[H]
-    \begin{algorithmic}[1]
-        \algrestore{kr}
-        \State $listaIndices += [i]$ \Comment{Al llegar al final de la fuerza bruta regista el indice}
+                    \State $listaIndices += [i]$ \Comment{Al llegar al final de la fuerza bruta regista el indice}
         \EndIf
     \EndIf 
     \If{$i < m - n$}
@@ -64,8 +56,17 @@
 \State return listaIndices
 
 \EndProcedure
+                    % \algstore{kr}
+
     \end{algorithmic}
 \end{algorithm}
+
+% \begin{algorithm}[H]
+%     \begin{algorithmic}[1]
+%         \algrestore{kr}
+        
+%     \end{algorithmic}
+% \end{algorithm}
 
 
 \phantomsection
@@ -130,6 +131,6 @@ Es importante notar que ese tiempo ocurre cuando todos los caracteres son lo mis
 % \addcontentsline{toc}{subsubsection}{Paso 6}
 \begin{figure} [H]
     \includegraphics[width=0.5\textwidth]{../codigoPythonJupyter/rk/Final.png}
-    \caption{Karp-Rabin (Apéndice rabinkarp.ipynb)}
+    \caption{Karp-Rabin (Anexo rabinkarp.ipynb)}
     \label{fig:kr}
 \end{figure}
